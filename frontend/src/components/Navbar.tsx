@@ -14,7 +14,8 @@ export default function Navbar() {
             </Link>
 
             <div style={{ display: 'flex', gap: '2rem', alignItems: 'center' }}>
-                <Link to="/catalog">Catalog</Link>
+                <Link to="/nosotros">Nosotros</Link>
+                <Link to="/catalog">Catálogo</Link>
                 <Link to="/cart" style={{ position: 'relative' }}>
                     <ShoppingCart size={24} />
                     {itemCount > 0 && (

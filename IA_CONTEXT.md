@@ -6,14 +6,15 @@ Este archivo resume la estructura, propósito, comandos de ejecución, variables
 - **Tipo:** Fullstack E-commerce de Servicios Digitales Intangibles (API REST con FastAPI + Frontend Vite/React).
 - **Frontend AIDS (Artificial Intelligent Digital Solutions):** Plataforma web moderna, oscura y con animaciones, enfocada en la venta de herramientas digitales, assets y soluciones para desarrolladores (inspirado en kodear.dev). Usa `react-router-dom` para las páginas: Home, Catalog, Product Detail, Cart.
 - **Backend:** Python 3.11+, FastAPI, SQLAlchemy, SQLite (localmente devolviendo fallbacks) o Postgres.
-- **Flujo Principal:** Los usuarios navegan el catálogo de servicios, los agregan al carrito, y generan un Client/Bill/Order/OrderDetail en el backend descontando el "stock" del servicio.
+- **Flujo Principal:** Los usuarios navegan el catálogo de servicios, los agregan al carrito, y general un proceso de Checkout que crea las entidades (Client, Bill, Order, OrderDetail) atómicamente en el backend, descontando y validando el "stock" del servicio.
 
 **Estructura principal**
 - `backend/`: servidor FastAPI, Dockerfiles, tests.
   - `backend/main.py`, `backend/run_production.py`: entrypoints (desarrollo y producción).
   - `backend/app/`: código de la aplicación (controllers, models, services, config, schemas, middleware).
   - `backend/requirements.txt`: dependencias Python.
-- `frontend/`: Vite React app (`src/`, `api/`, `components/`, `hooks/`).
+- `frontend/`: Vite React app (`src/`, `api/`, `components/`, `context/`, `hooks/`).
+  - El frontend utiliza el SDK de `axios` (`src/api/client.ts` y `src/api/checkout.ts`) para sincronizar datos y procesar la pasarela de compra.
 
 **Comandos rápidos**
 - Backend (desarrollo):
@@ -28,11 +29,11 @@ Este archivo resume la estructura, propósito, comandos de ejecución, variables
 - Backend (producción / Render):
   - `python run_production.py` (usa parámetros de `app.config.settings`).
 - Frontend (desarrollo):
-  ```bash
-  cd frontend
-  npm install
-  npm run dev -- --host --port 5173
-  ```
+  - Windows (desde `frontend`):
+    ```bash
+    npm install
+    npm run dev -- --host --port 5173
+    ```
 
 **Variables de entorno relevantes**
 - API / Uvicorn: `API_HOST`, `API_PORT`, `UVICORN_WORKERS`, `RELOAD`, `LOG_LEVEL`, `ACCESS_LOG`, `BACKLOG`, `TIMEOUT_KEEP_ALIVE`.
@@ -43,17 +44,20 @@ Este archivo resume la estructura, propósito, comandos de ejecución, variables
 **Endpoints y responsabilidades clave**
 - Health: `GET /health_check` (verificación básica y usada por docker/Render).
 - CRUD (principales): `/products`, `/categories`, `/clients`, `/addresses`, `/bills`, `/orders`, `/order_details`, `/reviews`.
+- Checkout Flow: Compuesto por POST a `/clients`, `/bills`, `/orders` y ciclo de POSTs a `/order_details` procesado en el Context de react mediante `processCheckout`.
 - Paginación: `skip`, `limit` como parámetros estándar.
 
 **Archivos y módulos importantes**
 - Configuración: `backend/app/config/settings.py`, `database.py`, `redis_config.py`, `logging_config.py`.
 - Rutas / controllers: `backend/app/controllers/*.py` (cada recurso tiene su controller).
 - Lógica de negocio: `backend/app/services/*.py`.
+  - `order_detail_service.py`: Lógica principal de integridad transaccional descontando las unidades de "stock" limitadas del activo virtual.
 - Modelos / esquemas: `backend/app/models/` y `backend/app/schemas/`.
 - Middleware: `backend/app/middleware/` (rate limiter, error handler, request-id).
 
 **Pruebas**
-- Tests backend: ejecutar `pytest` desde `backend/`.
+- Tests backend: ejecutar `pytest .\tests\` desde `backend/` asegurando que `PYTHONPATH='.'` en la consola.
+- Integración Frontend: `node` scripts contra el servidor corriendo en `localhost:8000`.
 
 **Docker & Deploy**
 - **¿Por qué hay tantos archivos de Docker?**
@@ -82,6 +86,7 @@ Este archivo resume la estructura, propósito, comandos de ejecución, variables
 3. Crear categoría → crear producto → listar productos → ver detalle.
 4. Crear orden con `order_details` que agote stock → validar error 400.
 5. Frontend apunta a `VITE_API_URL` correcto y muestra lista de productos.
+6. **Checkout Flow**: Desde el carrito agregar productos, rellenar el formulario de pago y verificar que limpie el carrito renderizando la validación de exito tras persistir todo al crear la vista final.
 
 **Notas y recomendaciones**
 - Mantener `.env` fuera del control de versiones; usar `.env.example` como plantilla.

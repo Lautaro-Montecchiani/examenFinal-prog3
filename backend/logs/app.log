@@ -1,3 +1,4 @@
 2026-02-21 22:10:37,444 - root - INFO - E-commerce API starting up
 2026-02-21 22:17:20,131 - root - INFO - E-commerce API starting up
 2026-02-21 22:17:20,132 - root - INFO - E-commerce API shutting down
+2026-02-21 22:41:19,469 - httpx - INFO - HTTP Request: GET http://testserver/health_check "HTTP/1.1 200 OK"

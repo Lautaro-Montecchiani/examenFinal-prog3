@@ -1,0 +1,22 @@
+============================= test session starts =============================
+platform win32 -- Python 3.13.12, pytest-9.0.2, pluggy-1.6.0 -- C:\Users\Lautaro\proyectos\examenFinal-prog3\backend\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\Lautaro\proyectos\examenFinal-prog3\backend
+plugins: anyio-4.12.1
+collecting ... collected 0 items / 1 error
+
+=================================== ERRORS ====================================
+____________________ ERROR collecting tests/test_health.py ____________________
+ImportError while importing test module 'C:\Users\Lautaro\proyectos\examenFinal-prog3\backend\tests\test_health.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+..\..\..\AppData\Local\Programs\Python\Python313\Lib\importlib\__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests\test_health.py:2: in <module>
+    from app.main import app
+E   ModuleNotFoundError: No module named 'app'
+=========================== short test summary info ===========================
+ERROR tests/test_health.py
+!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
+============================== 1 error in 0.42s ===============================

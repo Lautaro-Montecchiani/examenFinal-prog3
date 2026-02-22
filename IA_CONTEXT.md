@@ -4,9 +4,9 @@ Este archivo resume la estructura, propósito, comandos de ejecución, variables
 
 **Resumen del proyecto**
 - **Tipo:** Fullstack E-commerce de Servicios Digitales Intangibles (API REST con FastAPI + Frontend Vite/React).
-- **Frontend AIDS (Artificial Intelligent Digital Solutions):** Plataforma web moderna, oscura y con animaciones, enfocada en la venta de herramientas digitales, assets y soluciones para desarrolladores (inspirado en kodear.dev). Usa `react-router-dom` para las páginas: Home, Catalog, Product Detail, Cart.
-- **Backend:** Python 3.11+, FastAPI, SQLAlchemy, SQLite (localmente devolviendo fallbacks) o Postgres.
-- **Flujo Principal:** Los usuarios navegan el catálogo de servicios, los agregan al carrito, y general un proceso de Checkout que crea las entidades (Client, Bill, Order, OrderDetail) atómicamente en el backend, descontando y validando el "stock" del servicio.
+- **Frontend AIDS (Artificial Intelligent Digital Solutions):** Plataforma web B2B enfocada en la exhibición de assets digitales, automatizaciones e IA (inspirado en kodear.dev). Usa `react-router-dom` para las páginas: Home, Nosotros, Soluciones, y Detalle de Solución.
+- **Backend:** Python 3.11+, FastAPI, SQLAlchemy, SQLite (localmente devolviendo fallbacks) o Postgres. Aún conserva la lógica de e-commerce transaccional en el backend para futuras implementaciones, aunque el frontend actual funciona como Landing Page / Portfolio B2B.
+- **Flujo Principal:** Los usuarios navegan por los Casos de Éxito (Soluciones) y contactan vía email para cotizar implementaciones a medida (Agentes IA, E-commerce Headless, etc.).
 
 **Estructura principal**
 - `backend/`: servidor FastAPI, Dockerfiles, tests.
@@ -85,8 +85,7 @@ Este archivo resume la estructura, propósito, comandos de ejecución, variables
 2. DB y Redis accesibles; migraciones / alembic si aplica.
 3. Crear categoría → crear producto → listar productos → ver detalle.
 4. Crear orden con `order_details` que agote stock → validar error 400.
-5. Frontend apunta a `VITE_API_URL` correcto y muestra lista de productos.
-6. **Checkout Flow**: Desde el carrito agregar productos, rellenar el formulario de pago y verificar que limpie el carrito renderizando la validación de exito tras persistir todo al crear la vista final.
+8. **Frontend**: El Frontend actual es un portfolio institucional (`/nosotros`, `/soluciones`) y no consume activamente el flujo de checkout, sirviendo como vitrina B2B.
 
 **Notas y recomendaciones**
 - Mantener `.env` fuera del control de versiones; usar `.env.example` como plantilla.

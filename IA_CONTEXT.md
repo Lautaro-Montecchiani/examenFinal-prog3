@@ -56,9 +56,20 @@ Este archivo resume la estructura, propósito, comandos de ejecución, variables
 - Tests backend: ejecutar `pytest` desde `backend/`.
 
 **Docker & Deploy**
-- Desarrollo con Docker Compose: `cd backend && docker-compose up -d` (levanta Postgres + Redis + API si está configurado).
-- Producción local: `cd backend && docker-compose -f docker-compose.prod.yml up -d`.
-- Deploy en Render: build instalar dependencias + `python run_production.py`. Healthcheck: `/health_check`.
+- **¿Por qué hay tantos archivos de Docker?**
+  - **`Dockerfile`**: Contiene las instrucciones para construir la imagen del backend (instalar Python, dependencias, copiar código).
+  - **`docker-compose.yml`**: Es para **desarrollo local**. Levanta tu API, junto con servicios de apoyo como la base de datos PostgreSQL y Redis, mapeando puertos para que puedas probar todo en tu computadora.
+  - **`docker-compose.prod.yml`**: Es para **producción self-hosted**. Está optimizado para correr en un servidor privado (VPS), asegurando reinicios automáticos (`restart: unless-stopped`) y sin exponer puertos de BD al exterior.
+- **Desarrollo local rápido**: `cd backend && docker-compose up -d` (levanta todo el entorno).
+- **Deploy en Render (Backend)**: 
+  - Conectar el repo a Render y crear un **Web Service**.
+  - **Build Command**: `pip install -r requirements.txt`
+  - **Start Command**: `uvicorn app.main:app --host 0.0.0.0 --port 10000`
+  - Variables: Definir `POSTGRES_URI` (o usar la DB que te da Render gratis) y tus `.env`.
+- **Deploy en Vercel/Render (Frontend)**:
+  - Crear un **Static Site** (Render) o Project (Vercel) apuntando al framework Vite.
+  - **Build Command**: `npm install && npm run build`
+  - **Publish Directory**: `dist`
 
 **Observabilidad y límites**
 - Métricas Prometheus: habilitables con `METRICS_ENABLED=true`, expuestas en `/metrics`.

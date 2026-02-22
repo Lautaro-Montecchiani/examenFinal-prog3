@@ -1,3 +1,4 @@
+from typing import Optional
 from pydantic import Field
 from .base_schema import BaseSchema
 
@@ -10,10 +11,10 @@ class ProductCreate(BaseSchema):
 
 
 class ProductUpdate(BaseSchema):
-    name: str | None = Field(None, min_length=1, max_length=200)
-    price: float | None = Field(None, gt=0)
-    stock: int | None = Field(None, ge=0)
-    category_id: int | None = Field(None, gt=0)
+    name: Optional[str] = Field(None, min_length=1, max_length=200)
+    price: Optional[float] = Field(None, gt=0)
+    stock: Optional[int] = Field(None, ge=0)
+    category_id: Optional[int] = Field(None, gt=0)
 
 
 class ProductOut(ProductCreate):

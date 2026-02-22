@@ -1,3 +1,4 @@
+from typing import Optional
 from pydantic import Field
 from .base_schema import BaseSchema
 
@@ -10,10 +11,10 @@ class OrderDetailCreate(BaseSchema):
 
 
 class OrderDetailUpdate(BaseSchema):
-    quantity: int | None = Field(None, gt=0)
-    price: float | None = Field(None, gt=0)
-    order_id: int | None = Field(None, gt=0)
-    product_id: int | None = Field(None, gt=0)
+    quantity: Optional[int] = Field(None, gt=0)
+    price: Optional[float] = Field(None, gt=0)
+    order_id: Optional[int] = Field(None, gt=0)
+    product_id: Optional[int] = Field(None, gt=0)
 
 
 class OrderDetailOut(OrderDetailCreate):

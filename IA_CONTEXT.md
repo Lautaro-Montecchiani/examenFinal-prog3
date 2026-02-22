@@ -3,9 +3,10 @@
 Este archivo resume la estructura, propósito, comandos de ejecución, variables importantes y endpoints principales del proyecto fullstack (FastAPI backend + Vite React frontend).
 
 **Resumen del proyecto**
-- **Tipo:** Fullstack E-commerce (API REST con FastAPI + Frontend Vite/React).
-- **Backend:** Python 3.11, FastAPI, SQLAlchemy, Redis, Postgres (Docker opcional).
-- **Frontend:** Vite + React + TypeScript (consume `/products` y endpoints CRUD).
+- **Tipo:** Fullstack E-commerce de Servicios Digitales Intangibles (API REST con FastAPI + Frontend Vite/React).
+- **Frontend AIDS (Artificial Intelligent Digital Solutions):** Plataforma web moderna, oscura y con animaciones, enfocada en la venta de herramientas digitales, assets y soluciones para desarrolladores (inspirado en kodear.dev). Usa `react-router-dom` para las páginas: Home, Catalog, Product Detail, Cart.
+- **Backend:** Python 3.11+, FastAPI, SQLAlchemy, SQLite (localmente devolviendo fallbacks) o Postgres.
+- **Flujo Principal:** Los usuarios navegan el catálogo de servicios, los agregan al carrito, y generan un Client/Bill/Order/OrderDetail en el backend descontando el "stock" del servicio.
 
 **Estructura principal**
 - `backend/`: servidor FastAPI, Dockerfiles, tests.

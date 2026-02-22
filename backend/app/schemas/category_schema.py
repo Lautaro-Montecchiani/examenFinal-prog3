@@ -1,3 +1,4 @@
+from typing import Optional
 from pydantic import Field
 from .base_schema import BaseSchema
 
@@ -7,7 +8,7 @@ class CategoryCreate(BaseSchema):
 
 
 class CategoryUpdate(BaseSchema):
-    name: str | None = Field(None, min_length=1, max_length=200)
+    name: Optional[str] = Field(None, min_length=1, max_length=200)
 
 
 class CategoryOut(CategoryCreate):

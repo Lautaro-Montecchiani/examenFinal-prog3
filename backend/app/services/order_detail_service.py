@@ -30,8 +30,6 @@ class OrderDetailService(BaseService[OrderDetail, OrderDetailCreate, OrderDetail
             raise HTTPException(status_code=400, detail="Price mismatch")
         product.stock -= schema.quantity
         db.add(product)
-        db.commit()
-        db.refresh(product)
         return super().create(db, schema)
 
     def update(self, db: Session, id_key: int, schema: OrderDetailUpdate):
@@ -47,8 +45,6 @@ class OrderDetailService(BaseService[OrderDetail, OrderDetailCreate, OrderDetail
         if schema.price is not None and schema.price != product.price:
             raise HTTPException(status_code=400, detail="Price mismatch")
         db.add(product)
-        db.commit()
-        db.refresh(product)
         return super().update(db, id_key, schema)
 
     def delete(self, db: Session, id_key: int):

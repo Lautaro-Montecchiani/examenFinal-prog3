@@ -1,3 +1,4 @@
+from typing import Optional
 from datetime import date
 from pydantic import Field
 from .base_schema import BaseSchema
@@ -13,11 +14,11 @@ class BillCreate(BaseSchema):
 
 
 class BillUpdate(BaseSchema):
-    bill_number: str | None = Field(None, min_length=1, max_length=100)
-    discount: float | None = Field(None, ge=0)
-    date: date | None = None
-    total: float | None = Field(None, ge=0)
-    payment_type: PaymentType | None = None
+    bill_number: Optional[str] = Field(None, min_length=1, max_length=100)
+    discount: Optional[float] = Field(None, ge=0)
+    date: Optional[date] = None
+    total: Optional[float] = Field(None, ge=0)
+    payment_type: Optional[PaymentType] = None
 
 
 class BillOut(BillCreate):

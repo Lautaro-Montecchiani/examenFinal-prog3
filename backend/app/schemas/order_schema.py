@@ -1,3 +1,4 @@
+from typing import Optional
 from datetime import datetime
 from pydantic import Field
 from .base_schema import BaseSchema
@@ -14,12 +15,12 @@ class OrderCreate(BaseSchema):
 
 
 class OrderUpdate(BaseSchema):
-    date: datetime | None = None
-    total: float | None = Field(None, ge=0)
-    delivery_method: DeliveryMethod | None = None
-    status: OrderStatus | None = None
-    client_id: int | None = Field(None, gt=0)
-    bill_id: int | None = Field(None, gt=0)
+    date: Optional[datetime] = None
+    total: Optional[float] = Field(None, ge=0)
+    delivery_method: Optional[DeliveryMethod] = None
+    status: Optional[OrderStatus] = None
+    client_id: Optional[int] = Field(None, gt=0)
+    bill_id: Optional[int] = Field(None, gt=0)
 
 
 class OrderOut(OrderCreate):

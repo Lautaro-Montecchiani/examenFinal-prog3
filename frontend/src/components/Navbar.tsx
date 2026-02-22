@@ -15,6 +15,7 @@ export default function Navbar() {
 
             <div style={{ display: 'flex', gap: '2rem', alignItems: 'center' }}>
                 <Link to="/nosotros">Nosotros</Link>
+                <Link to="/soluciones">Soluciones</Link>
                 <Link to="/catalog">Catálogo</Link>
                 <Link to="/cart" style={{ position: 'relative' }}>
                     <ShoppingCart size={24} />

@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Users, Award, Briefcase, Zap } from 'lucide-react';
+import { Database, Zap, Cpu, Code } from 'lucide-react';
 
 export default function AboutPage() {
     return (
@@ -20,7 +20,7 @@ export default function AboutPage() {
                         color: 'var(--text-secondary)'
                     }}
                 >
-                    Sobre Nosotros
+                    Sobre AIDS
                 </motion.div>
 
                 <motion.h1
@@ -38,7 +38,7 @@ export default function AboutPage() {
                         maxWidth: '900px'
                     }}
                 >
-                    Nos define nuestra pasión por transformar ideas en soluciones que generan un impacto real.
+                    Nos define nuestra obsesión por la automatización inteligente.
                 </motion.h1>
                 <motion.p
                     initial={{ opacity: 0 }}
@@ -46,7 +46,7 @@ export default function AboutPage() {
                     transition={{ delay: 0.2, duration: 0.5 }}
                     style={{ color: 'var(--text-secondary)', fontSize: '1.25rem', maxWidth: '750px', margin: '0 auto', lineHeight: '1.6' }}
                 >
-                    Nuestro equipo es interdisciplinario y profesional para dar soluciones innovadoras a problemas cotidianos que limitan el potencial de las empresas.
+                    Nuestro equipo combina ingeniería de software y modelos de IA avanzados (LLMs) para crear agentes y herramientas digitales empresariales.
                 </motion.p>
             </header>
 
@@ -58,12 +58,12 @@ export default function AboutPage() {
                     viewport={{ once: true }}
                     style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}
                 >
-                    <h2 style={{ fontSize: '2.5rem', lineHeight: '1.2' }}>Mucho más que un proveedor de servicios.</h2>
+                    <h2 style={{ fontSize: '2.5rem', lineHeight: '1.2' }}>Mucho más que una consultora.</h2>
                     <p style={{ color: 'var(--text-secondary)', lineHeight: '1.7', fontSize: '1.1rem' }}>
-                        En AIDS somos mucho más que desarrolladores de software. Somos socios tecnológicos estratégicos de nuestros clientes y construimos relaciones de largo plazo.
+                        En AIDS desarrollamos inteligencia. Nos especializamos en extraer el máximo valor de los datos a través del entrenamiento de agentes autónomos y automatización de flujos de trabajo orientados a la performance.
                     </p>
                     <p style={{ color: 'var(--text-secondary)', lineHeight: '1.7', fontSize: '1.1rem' }}>
-                        Escuchamos para entender, diseñamos para transformar y desarrollamos soluciones digitales que impulsan el crecimiento de tu empresa. Cada proyecto es un desafío que abordamos con pasión, trabajando en equipo garantizando excelencia en cada etapa de nuestro proceso.
+                        Nuestros assets digitales y API resuelven desafíos de escalabilidad, integrando el poder computacional con resultados tangibles. Creamos herramientas que los desarrolladores adoran y las empresas necesitan.
                     </p>
                 </motion.div>
                 <motion.div
@@ -75,20 +75,20 @@ export default function AboutPage() {
                 >
                     <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'center' }}>
                         <div style={{ padding: '1rem', background: 'rgba(255,255,255,0.05)', borderRadius: '1rem', color: 'var(--primary-color)' }}>
-                            <Zap size={32} />
+                            <Cpu size={32} />
                         </div>
                         <div>
-                            <h3 style={{ fontSize: '1.2rem', marginBottom: '0.25rem' }}>Soluciones de Calidad</h3>
-                            <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem' }}>Nuestro proceso certificado garantiza excelencia técnica.</p>
+                            <h3 style={{ fontSize: '1.2rem', marginBottom: '0.25rem' }}>Ecosistemas Inteligentes</h3>
+                            <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem' }}>Agentes que aprenden de la interacción continua del usuario.</p>
                         </div>
                     </div>
                     <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'center' }}>
                         <div style={{ padding: '1rem', background: 'rgba(255,255,255,0.05)', borderRadius: '1rem', color: 'var(--primary-color)' }}>
-                            <Users size={32} />
+                            <Code size={32} />
                         </div>
                         <div>
-                            <h3 style={{ fontSize: '1.2rem', marginBottom: '0.25rem' }}>Enfoque Humano</h3>
-                            <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem' }}>Ponemos a nuestros clientes en el centro del proceso colectivo.</p>
+                            <h3 style={{ fontSize: '1.2rem', marginBottom: '0.25rem' }}>Developer Tools</h3>
+                            <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem' }}>Assets modulares listos para integrarse en tu stack técnico.</p>
                         </div>
                     </div>
                 </motion.div>
@@ -97,9 +97,9 @@ export default function AboutPage() {
             {/* Como lo hacemos */}
             <section style={{ marginBottom: '8rem' }}>
                 <div className="glass-panel" style={{ padding: '4rem', textAlign: 'center', background: 'linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(0,0,0,0) 100%)' }}>
-                    <h2 style={{ fontSize: '2.5rem', marginBottom: '2rem' }}>¿Cómo lo hacemos? En conjunto.</h2>
+                    <h2 style={{ fontSize: '2.5rem', marginBottom: '2rem' }}>Arquitectura Data-Driven</h2>
                     <p style={{ color: 'var(--text-secondary)', fontSize: '1.15rem', lineHeight: '1.8', maxWidth: '800px', margin: '0 auto' }}>
-                        En nuestra forma de trabajar combinamos profesionalismo, experiencia técnica y un enfoque humano constante. Creemos que las mejores soluciones nacen de la colaboración: mientras aportamos conocimiento técnico, los clientes contribuyen con la experiencia sobre su negocio. Nuestro objetivo es construir relaciones cercanas basadas en confianza y mejora continua.
+                        Implementamos metodologías de machine-learning ops (MLOps). Transformamos problemas complejos de procesamiento del lenguaje natural y data analytics en APIs que puedes consumir en milisegundos.
                     </p>
                 </div>
             </section>
@@ -108,9 +108,9 @@ export default function AboutPage() {
             <section style={{ marginBottom: '8rem' }}>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '2rem', textAlign: 'center' }}>
                     {[
-                        { number: '+10', label: 'Años de experiencia', icon: <Briefcase size={28} /> },
-                        { number: '+500', label: 'Clientes activos', icon: <Users size={28} /> },
-                        { number: '+2000', label: 'Proyectos realizados', icon: <Award size={28} /> }
+                        { number: '99.9%', label: 'Uptime de modelos', icon: <Database size={28} /> },
+                        { number: '150+', label: 'Agentes desplegados', icon: <Cpu size={28} /> },
+                        { number: '3M+', label: 'Tareas automatizadas', icon: <Zap size={28} /> }
                     ].map((stat, i) => (
                         <motion.div
                             key={i}
@@ -135,9 +135,9 @@ export default function AboutPage() {
 
             {/* Final CTA */}
             <section style={{ textAlign: 'center', padding: '0 2rem' }}>
-                <h2 style={{ fontSize: '2.5rem', marginBottom: '1.5rem' }}>Trabajamos con grandes marcas.</h2>
+                <h2 style={{ fontSize: '2.5rem', marginBottom: '1.5rem' }}>Evoluciona tu infraestructura.</h2>
                 <p style={{ color: 'var(--text-secondary)', fontSize: '1.2rem', marginBottom: '3rem', maxWidth: '600px', margin: '0 auto 3rem' }}>
-                    Clientes de todo el mundo nos eligen como su socio tecnológico para potenciar su transformación digital.
+                    Empresas vanguardistas confían en nuestros modelos pre-entrenados para tomar la delantera.
                 </p>
             </section>
         </div>

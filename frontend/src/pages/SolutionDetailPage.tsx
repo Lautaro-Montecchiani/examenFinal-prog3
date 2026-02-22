@@ -1,11 +1,12 @@
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft, CheckCircle2 } from 'lucide-react';
-import { solutionsData } from '../data/solutions';
+import { useSolutionsAdmin } from '../hooks/useSolutionsAdmin';
 
 export default function SolutionDetailPage() {
     const { slug } = useParams<{ slug: string }>();
-    const solution = solutionsData.find(s => s.slug === slug);
+    const { solutions } = useSolutionsAdmin();
+    const solution = solutions.find(s => s.slug === slug);
 
     if (!solution) {
         return (
@@ -51,7 +52,7 @@ export default function SolutionDetailPage() {
                     transition={{ delay: 0.2 }}
                     style={{ color: 'var(--text-secondary)', fontSize: '1.3rem', maxWidth: '800px', lineHeight: '1.7', marginBottom: '3rem' }}
                 >
-                    {solution.description}
+                    {solution.fullDescription}
                 </motion.p>
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -67,7 +68,9 @@ export default function SolutionDetailPage() {
             <section style={{ marginBottom: '6rem' }}>
                 <h2 style={{ fontSize: '2.5rem', marginBottom: '3rem' }}>Beneficios para tu negocio</h2>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
-                    {solution.benefits.map((benefit, i) => (
+
+                    {/* Fake benefits for now, using features to map or static strings until we add benefits to the Admin */}
+                    {[1, 2, 3].map((_, i) => (
                         <motion.div
                             key={i}
                             initial={{ opacity: 0, scale: 0.95 }}
@@ -78,10 +81,10 @@ export default function SolutionDetailPage() {
                             style={{ padding: '2rem' }}
                         >
                             <h3 style={{ fontSize: '1.3rem', marginBottom: '1rem', color: 'var(--primary-color)' }}>
-                                {benefit.title}
+                                Beneficio Destacado {i + 1}
                             </h3>
                             <p style={{ color: 'var(--text-secondary)', lineHeight: '1.6' }}>
-                                {benefit.desc}
+                                Escabilidad, rendimiento y crecimiento sostenido gracias a la adopción de esta solución integral B2B.
                             </p>
                         </motion.div>
                     ))}

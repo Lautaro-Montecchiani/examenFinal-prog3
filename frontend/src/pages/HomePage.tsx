@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Code, Cpu, Globe, Layout, Palette, Zap, ArrowRight, Star } from 'lucide-react';
 import { useSolutionsAdmin } from '../hooks/useSolutionsAdmin';
-import './HomePage.css';
 
 export default function HomePage() {
     const { solutions } = useSolutionsAdmin();

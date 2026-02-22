@@ -1,9 +1,21 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowRight, Sparkles } from 'lucide-react';
-import { solutionsData } from '../data/solutions';
+import { ArrowRight, Box, Code, Cpu, Globe, Layout, Palette, Zap } from 'lucide-react';
+import { useSolutionsAdmin } from '../hooks/useSolutionsAdmin';
+import './SolutionsPage.css';
+
+const iconMap: Record<string, React.ReactNode> = {
+    Box: <Box size={32} />,
+    Code: <Code size={32} />,
+    Cpu: <Cpu size={32} />,
+    Globe: <Globe size={32} />,
+    Layout: <Layout size={32} />,
+    Palette: <Palette size={32} />,
+    Zap: <Zap size={32} />
+};
 
 export default function SolutionsPage() {
+    const { solutions } = useSolutionsAdmin();
     return (
         <div className="container" style={{ paddingBottom: '4rem' }}>
             <header style={{ textAlign: 'center', margin: '6rem 0 4rem' }}>

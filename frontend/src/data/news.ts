@@ -31,13 +31,13 @@ export const newsData: NewsItem[] = [
     },
     {
         id: 'news-2',
-        slug: 'kodear-en-expoagro-2025',
-        title: 'Kodear presente en Expoagro 2025',
+        slug: 'aids-en-expoagro-2025',
+        title: 'AIDS presente en Expoagro 2025',
         date: '8 de Marzo, 2025',
         summary: 'Acompañamos la transformación digital del sector agroindustrial con nuestras soluciones headless y arquitecturas escalables B2B.',
         content: `
       <h2>Transformando el campo con tecnología</h2>
-      <p>La integración de tecnología en la agroindustria ya no es una opción, es una necesidad urgente para mantener la competitividad. En esta edición de Expoagro 2025, estuvimos presentes respaldados por la experiencia de Kodear, demostrando cómo crear ecosistemas digitales robustos para un sector tan dinámico.</p>
+      <p>La integración de tecnología en la agroindustria ya no es una opción, es una necesidad urgente para mantener la competitividad. En esta edición de Expoagro 2025, estuvimos presentes respaldados por la experiencia de AIDS, demostrando cómo crear ecosistemas digitales robustos para un sector tan dinámico.</p>
       
       <h3>Soluciones Headless para Agronegocios</h3>
       <p>Uno de los temas centrales de nuestras charlas fue la implementación de <strong>E-commerce Headless B2B</strong>. Al separar el frontend del backend, logramos que empresas proveedoras de insumos agropecuarios ofrezcan una experiencia de compra fluida y rápida, conectada directamente a sus ERPs complejos sin comprometer la velocidad ni la UX/UI de la plataforma.</p>
@@ -45,7 +45,7 @@ export const newsData: NewsItem[] = [
       <h3>El futuro es ahora</h3>
       <p>Nos llevamos grandes insights y confirmamos que el sector está ávido de soluciones integrales. Desde automatización de inventarios hasta portales B2B mayoristas, estamos preparados para llevar la innovación digital al corazón productivo del país.</p>
     `,
-        imageUrl: 'https://images.unsplash.com/photo-1592982537447-6f2c3cb19067?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+        imageUrl: 'https://images.unsplash.com/photo-1625246333195-78d9c38ad449?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
         category: 'Noticias'
     }
 ];

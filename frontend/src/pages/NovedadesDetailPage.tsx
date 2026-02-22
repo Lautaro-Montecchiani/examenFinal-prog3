@@ -1,11 +1,12 @@
 import { useParams, Link } from 'react-router-dom';
-import { newsData } from '../data/news';
+import { useNewsAdmin } from '../hooks/useNewsAdmin';
 import './NovedadesDetailPage.css';
 
 const NovedadesDetailPage = () => {
     const { slug } = useParams<{ slug: string }>();
+    const { news } = useNewsAdmin();
 
-    const article = newsData.find((item) => item.slug === slug);
+    const article = news.find((item) => item.slug === slug);
 
     if (!article) {
         return (

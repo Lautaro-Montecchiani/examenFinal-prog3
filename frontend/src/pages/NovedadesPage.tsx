@@ -1,8 +1,11 @@
 import { Link } from 'react-router-dom';
-import { newsData } from '../data/news';
+import { motion } from 'framer-motion';
+import { useNewsAdmin } from '../hooks/useNewsAdmin';
+import { ArrowRight, Calendar, Tag } from 'lucide-react';
 import './NovedadesPage.css';
 
 const NovedadesPage = () => {
+    const { news } = useNewsAdmin();
     return (
         <div className="novedades-page">
             <section className="novedades-header">
@@ -17,14 +20,13 @@ const NovedadesPage = () => {
             <section className="news-list-section">
                 <div className="container">
                     <div className="news-grid">
-                        {newsData.map((news) => (
-                            <article key={news.id} className="news-card">
-                                <Link to={`/novedades/${news.slug}`} className="news-image-wrapper">
-                                    <div className="news-category">{news.category}</div>
-                                    <img src={news.imageUrl} alt={news.title} className="news-image" />
+                        {news.map((item, index) => (
+                            <motion.article key={item.id} className="news-card">
+                                <Link to={`/novedades/${item.slug}`} className="news-image-wrapper">
+                                    <div className="news-category">{item.category}</div>
+                                    <img src={item.imageUrl} alt={item.title} className="news-image" />
                                 </Link>
                                 <div className="news-content">
-                                    <span className="news-date">{news.date}</span>
                                     <Link to={`/novedades/${news.slug}`} className="news-title-link">
                                         <h3>{news.title}</h3>
                                     </Link>

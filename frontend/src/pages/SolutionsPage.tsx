@@ -1,8 +1,7 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowRight, Box, Code, Cpu, Globe, Layout, Palette, Zap } from 'lucide-react';
+import { ArrowRight, Box, Code, Cpu, Globe, Layout, Palette, Zap, Sparkles } from 'lucide-react';
 import { useSolutionsAdmin } from '../hooks/useSolutionsAdmin';
-import './SolutionsPage.css';
 
 const iconMap: Record<string, React.ReactNode> = {
     Box: <Box size={32} />,
@@ -52,7 +51,7 @@ export default function SolutionsPage() {
             </header>
 
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '2rem' }}>
-                {solutionsData.map((sol, i) => (
+                {solutions.map((sol, i) => (
                     <motion.div
                         key={sol.slug}
                         initial={{ opacity: 0, y: 20 }}

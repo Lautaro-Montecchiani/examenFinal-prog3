@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { solutions as initialSolutions, Solution } from '../data/solutions';
+import { solutionsData as initialSolutions, Solution } from '../data/solutions';
 
 export const useSolutionsAdmin = () => {
     const [solutions, setSolutions] = useState<Solution[]>([]);

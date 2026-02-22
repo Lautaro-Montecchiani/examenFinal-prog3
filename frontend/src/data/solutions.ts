@@ -1,5 +1,22 @@
-export const solutionsData = [
+export interface Benefit {
+    title: string;
+    desc: string;
+}
+
+export interface Solution {
+    id: string;
+    slug: string;
+    title: string;
+    summary: string;
+    description?: string;
+    fullDescription?: string;
+    benefits: Benefit[];
+    features: string[];
+}
+
+export const solutionsData: Solution[] = [
     {
+        id: 'sol-agente-atencion-ia',
         slug: 'agente-atencion-ia',
         title: 'Agente de IA de Atención Automática',
         summary: 'Automatizamos la atención al cliente con modelos fundacionales que entienden y resuelven el 85% de las consultas.',
@@ -13,6 +30,7 @@ export const solutionsData = [
         features: ['Modelos NLP (LLM)', 'Vectores de contexto', 'Basses de datos vectoriales', 'Omnicanalidad (WhatsApp, Web)']
     },
     {
+        id: 'sol-ecommerce-headless',
         slug: 'ecommerce-headless',
         title: 'Plataforma E-commerce Headless',
         summary: 'Arquitectura ultra veloz que separa el frontend del backend para tiendas transaccionales a gran escala.',
@@ -26,6 +44,7 @@ export const solutionsData = [
         features: ['Next.js / Vite Frontends', 'FastAPI Backend', 'Microservicios', 'Redis Caching']
     },
     {
+        id: 'sol-dashboard-predictivo',
         slug: 'dashboard-predictivo',
         title: 'Dashboard Analítico con Modelos Predictivos',
         summary: 'Visualiza el futuro de tus ventas mediante analítica de datos avanzada y aprendizaje automático.',

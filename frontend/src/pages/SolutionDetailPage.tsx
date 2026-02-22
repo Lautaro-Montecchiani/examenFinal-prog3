@@ -58,9 +58,9 @@ export default function SolutionDetailPage() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.3 }}
                 >
-                    <Link to="/catalog" className="btn-primary" style={{ padding: '1rem 3rem', fontSize: '1.2rem', borderRadius: '3rem' }}>
-                        Cotizar solución
-                    </Link>
+                    <a href="mailto:contacto@aids.com" className="btn-primary" style={{ padding: '1rem 3rem', fontSize: '1.2rem', borderRadius: '3rem' }}>
+                        Contactar ventas
+                    </a>
                 </motion.div>
             </header>
 

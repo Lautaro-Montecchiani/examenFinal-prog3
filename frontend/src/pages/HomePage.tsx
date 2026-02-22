@@ -54,8 +54,8 @@ export default function HomePage() {
                     transition={{ delay: 0.3, duration: 0.4 }}
                     style={{ display: 'flex', gap: '1rem' }}
                 >
-                    <Link to="/catalog" className="btn-primary" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '1.1rem', padding: '1rem 2rem' }}>
-                        Ver Catálogo <ArrowRight size={20} />
+                    <Link to="/soluciones" className="btn-primary" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '1.1rem', padding: '1rem 2rem' }}>
+                        Ver Soluciones <ArrowRight size={20} />
                     </Link>
                     <a href="#soluciones" className="btn-primary" style={{ background: 'transparent', border: '1px solid var(--border-color)', display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '1.1rem', padding: '1rem 2rem' }}>
                         Conocer más
@@ -142,10 +142,10 @@ export default function HomePage() {
             <section className="glass-panel" style={{ padding: '5rem 2rem', textAlign: 'center', background: 'linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(0,0,0,0) 100%)' }}>
                 <h2 style={{ fontSize: '3rem', marginBottom: '1.5rem' }}>¿Listo para el siguiente nivel?</h2>
                 <p style={{ color: 'var(--text-secondary)', fontSize: '1.2rem', maxWidth: '600px', margin: '0 auto 3rem' }}>
-                    Agenda una llamada o revisa nuestro catálogo de soluciones pre-construidas listas para integrarse en tu stack.
+                    Agenda una llamada o revisa nuestros casos de éxito para ver cómo transformamos negocios.
                 </p>
-                <Link to="/catalog" className="btn-primary" style={{ padding: '1rem 3rem', fontSize: '1.2rem', borderRadius: '3rem' }}>
-                    Adquirir Soluciones
+                <Link to="/soluciones" className="btn-primary" style={{ padding: '1rem 3rem', fontSize: '1.2rem', borderRadius: '3rem' }}>
+                    Ver Casos de Éxito
                 </Link>
             </section>
         </div>

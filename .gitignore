@@ -1,0 +1,10 @@
+# IDEs y SO
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.swp
+
+# Chat y logs
+## GitHub Copilot Chat.md
+*.log

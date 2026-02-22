@@ -23,6 +23,11 @@ class OrderDetailService(BaseService[OrderDetail, OrderDetailCreate, OrderDetail
         return product
 
     def create(self, db: Session, schema: OrderDetailCreate):
+        # NOTE FOR FUTURE AUTOMATION (AIDS B2B):
+        # This logic is kept dormant but fully functional. 
+        # When moving towards automated digital service sales (e.g. AI agents, limited API access), 
+        # "product.stock" represents the available licenses or capacity for that service.
+        # Decreasing stock here ensures we don't oversell automated capacity.
         product = self._ensure_fk(db, schema.order_id, schema.product_id)
         if product.stock < schema.quantity:
             raise HTTPException(status_code=400, detail="Insufficient stock")

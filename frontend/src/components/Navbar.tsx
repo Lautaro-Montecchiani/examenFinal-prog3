@@ -12,6 +12,15 @@ export default function Navbar() {
             <div style={{ display: 'flex', gap: '2rem', alignItems: 'center' }}>
                 <Link to="/nosotros">Nosotros</Link>
                 <Link to="/soluciones">Soluciones</Link>
+                <Link to="/novedades">Novedades</Link>
+                <Link to="/contacto" style={{
+                    background: 'var(--accent-primary)',
+                    color: '#000',
+                    padding: '0.4rem 1rem',
+                    borderRadius: '20px',
+                    fontWeight: 600,
+                    textDecoration: 'none'
+                }}>Contacto</Link>
             </div>
         </nav>
     );

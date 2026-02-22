@@ -4,9 +4,9 @@ Este archivo resume la estructura, propósito, comandos de ejecución, variables
 
 **Resumen del proyecto**
 - **Tipo:** Fullstack E-commerce de Servicios Digitales Intangibles (API REST con FastAPI + Frontend Vite/React).
-- **Frontend AIDS (Artificial Intelligent Digital Solutions):** Plataforma web B2B enfocada en la exhibición de assets digitales, automatizaciones e IA (inspirado en kodear.dev). Usa `react-router-dom` para las páginas: Home, Nosotros, Soluciones, y Detalle de Solución.
-- **Backend:** Python 3.11+, FastAPI, SQLAlchemy, SQLite (localmente devolviendo fallbacks) o Postgres. Aún conserva la lógica de e-commerce transaccional en el backend para futuras implementaciones, aunque el frontend actual funciona como Landing Page / Portfolio B2B.
-- **Flujo Principal:** Los usuarios navegan por los Casos de Éxito (Soluciones) y contactan vía email para cotizar implementaciones a medida (Agentes IA, E-commerce Headless, etc.).
+- **Frontend AIDS (Artificial Intelligent Digital Solutions):** Plataforma web B2B enfocada en la exhibición de assets digitales, automatizaciones e IA (inspirado en kodear.dev). Usa `react-router-dom` para las páginas: Home, Nosotros, Soluciones, Detalle de Solución, Novedades (con detalle) y Contacto.
+- **Backend:** Python 3.11+, FastAPI, SQLAlchemy, SQLite (localmente devolviendo fallbacks) o Postgres. Aún conserva la lógica dormida de e-commerce transaccional (stock y orders) en el backend para futuras implementaciones de venta de APIs B2B o automatizaciones.
+- **Flujo Principal:** Los usuarios navegan por las Soluciones y Novedades B2B y contactan vía email o el formulario web para cotizar implementaciones a medida (Agentes IA, E-commerce Headless, etc.).
 
 **Estructura principal**
 - `backend/`: servidor FastAPI, Dockerfiles, tests.
@@ -65,15 +65,12 @@ Este archivo resume la estructura, propósito, comandos de ejecución, variables
   - **`docker-compose.yml`**: Es para **desarrollo local**. Levanta tu API, junto con servicios de apoyo como la base de datos PostgreSQL y Redis, mapeando puertos para que puedas probar todo en tu computadora.
   - **`docker-compose.prod.yml`**: Es para **producción self-hosted**. Está optimizado para correr en un servidor privado (VPS), asegurando reinicios automáticos (`restart: unless-stopped`) y sin exponer puertos de BD al exterior.
 - **Desarrollo local rápido**: `cd backend && docker-compose up -d` (levanta todo el entorno).
-- **Deploy en Render (Backend)**: 
-  - Conectar el repo a Render y crear un **Web Service**.
-  - **Build Command**: `pip install -r requirements.txt`
-  - **Start Command**: `uvicorn app.main:app --host 0.0.0.0 --port 10000`
-  - Variables: Definir `POSTGRES_URI` (o usar la DB que te da Render gratis) y tus `.env`.
-- **Deploy en Vercel/Render (Frontend)**:
-  - Crear un **Static Site** (Render) o Project (Vercel) apuntando al framework Vite.
-  - **Build Command**: `npm install && npm run build`
-  - **Publish Directory**: `dist`
+- **Deploy automatizado en Render (Backend)**: 
+  - Al poseer el archivo `backend/render.yaml` (Infrastructure as Code Blueprint), solo necesitas darle permisos de GitHub a Render, elegir "New from Blueprint" y seleccionarlo. Desplegará tu Servidor FastAPI y una nueva base de datos PostgreSQL enlazada automáticamente.
+- **Deploy automatizado en Vercel (Frontend)**:
+  - Importar tu repositorio en Vercel indicando que la "Root Directory" es `frontend`.
+  - El "Framework Preset" se autodetectará con `Vite`.
+  - El proyecto ya contiene el archivo `frontend/vercel.json` para garantizar que la plataforma de React Router (Páginas, Novedades, Soluciones) soporte correctamente la recarga F5 y URLs directas sin arrojar errores 404.
 
 **Observabilidad y límites**
 - Métricas Prometheus: habilitables con `METRICS_ENABLED=true`, expuestas en `/metrics`.
@@ -85,7 +82,7 @@ Este archivo resume la estructura, propósito, comandos de ejecución, variables
 2. DB y Redis accesibles; migraciones / alembic si aplica.
 3. Crear categoría → crear producto → listar productos → ver detalle.
 4. Crear orden con `order_details` que agote stock → validar error 400.
-8. **Frontend**: El Frontend actual es un portfolio institucional (`/nosotros`, `/soluciones`) y no consume activamente el flujo de checkout, sirviendo como vitrina B2B.
+8. **Frontend**: El Frontend actual es un portfolio institucional (`/nosotros`, `/soluciones`, `/novedades`, `/contacto`) y no consume activamente el flujo de checkout, sirviendo como vitrina B2B.
 
 **Notas y recomendaciones**
 - Mantener `.env` fuera del control de versiones; usar `.env.example` como plantilla.

@@ -47,5 +47,37 @@ export const newsData: NewsItem[] = [
     `,
         imageUrl: 'https://images.unsplash.com/photo-1625246333195-78d9c38ad449?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
         category: 'Noticias'
+    },
+    {
+        id: 'news-3',
+        slug: 'experiencia-endeavor-mendoza-2025',
+        title: 'Estaremos en Experiencia Endeavor Mendoza 2025',
+        date: '15 de Mayo, 2025',
+        summary: 'El evento para emprendedores más grande de Cuyo nos tendrá como protagonistas hablando sobre el impacto de la IA en escalar negocios B2B.',
+        content: `
+      <h2>Networking y Tecnología en la región de Cuyo</h2>
+      <p>Nos enorgullece anunciar que AIDS será parte de la próxima <strong>Experiencia Endeavor Cuyo</strong>, que se celebrará en la provincia de Mendoza. Este evento reúne a los líderes, fundadores y visionarios más importantes de la región, y no podíamos faltar.</p>
+      
+      <h3>Agentes de IA para potenciar tu Startup</h3>
+      <p>Durante la jornada, nuestro equipo técnico estará brindando mentorías sobre cómo las empresas tradicionales e innovadoras pueden apalancar su crecimiento implementando agentes de software inteligente y automatizaciones. ¡Te esperamos en nuestro stand para conversar sobre el futuro de la automatización en las empresas!</p>
+    `,
+        imageUrl: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+        category: 'Eventos'
+    },
+    {
+        id: 'news-4',
+        slug: 'mendoza-tic-forum-2025',
+        title: 'Mendoza TIC Forum: Liderando la adopción Cloud',
+        date: '22 de Agosto, 2025',
+        summary: 'Acompañamos al Polo TIC de Mendoza en el foro anual debatiendo sobre infraestructura en la nube y arquitecturas Headless de alto rendimiento.',
+        content: `
+      <h2>Innovación e Infraestructura en Mendoza</h2>
+      <p>Mendoza se sigue consolidando como un polo tecnológico clave en Argentina. En esta edición del Mendoza TIC Forum en el Parque Tecnológico, participamos de los paneles principales sobre modernización de arquitecturas legacy en grandes empresas.</p>
+      
+      <h3>Cloud y Headless Commerce</h3>
+      <p>Presentamos casos de éxito locales y nacionales donde la migración de plataformas B2B monolíticas a arquitecturas headless (Next.js + FastAPI) logró reducir drásticamente los costos de servidor y mejoró significativamente las métricas de retención de usuarios. ¡Un paso más para la digitalización federal del país!</p>
+    `,
+        imageUrl: 'https://images.unsplash.com/photo-1591115765373-5207764f72e7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+        category: 'Conferencias'
     }
 ];

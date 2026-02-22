@@ -1,10 +1,13 @@
 import { Link } from 'react-router-dom';
 import { Newspaper, Briefcase, TrendingUp, Users } from 'lucide-react';
-import { newsData } from '../../../data/news';
-import { solutions } from '../../../data/solutions';
+import { useNewsAdmin } from '../../hooks/useNewsAdmin';
+import { useSolutionsAdmin } from '../../hooks/useSolutionsAdmin';
 import './DashboardPage.css';
 
 const DashboardPage = () => {
+    const { news } = useNewsAdmin();
+    const { solutions } = useSolutionsAdmin();
+
     return (
         <div className="dashboard-page">
             <div className="dashboard-header">
@@ -19,7 +22,7 @@ const DashboardPage = () => {
                     </div>
                     <div className="stat-info">
                         <h3>Noticias Publicadas</h3>
-                        <span className="stat-value">{newsData.length}</span>
+                        <span className="stat-value">{news.length}</span>
                     </div>
                 </div>
 

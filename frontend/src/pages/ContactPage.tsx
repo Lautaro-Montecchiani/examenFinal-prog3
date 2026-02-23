@@ -92,7 +92,7 @@ const ContactPage = () => {
                                     </div>
                                     <div>
                                         <h3>Oficinas</h3>
-                                        <p>Buenos Aires, Argentina<br />Rosario, Santa Fe</p>
+                                        <p>Mendoza, Argentina</p>
                                     </div>
                                 </div>
                             </div>
@@ -108,7 +108,7 @@ const ContactPage = () => {
                                         name="name"
                                         value={formData.name}
                                         onChange={handleChange}
-                                        placeholder="Ej. Juan Pérez"
+                                        placeholder="Ej. Jorge Salvio"
                                         required
                                     />
                                 </div>
@@ -121,7 +121,7 @@ const ContactPage = () => {
                                         name="email"
                                         value={formData.email}
                                         onChange={handleChange}
-                                        placeholder="juan@empresa.com"
+                                        placeholder="jorge@correo.com"
                                         required
                                     />
                                 </div>

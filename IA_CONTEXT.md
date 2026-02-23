@@ -5,10 +5,11 @@ Este archivo resume la estructura, propósito, comandos de ejecución, variables
 **Resumen del proyecto**
 - **Tipo:** Fullstack E-commerce de Servicios Digitales Intangibles (API REST con FastAPI + Frontend Vite/React).
 - **Frontend AIDS (Artificial Intelligent Digital Solutions):** Plataforma web B2B enfocada en la exhibición de assets digitales, automatizaciones e IA (inspirado en kodear.dev). Usa `react-router-dom` para las páginas: Home, Nosotros, Soluciones, Detalle de Solución, Novedades (con detalle) y Contacto.
+- **Portal de Pagos B2B:** Incluye un flow público `/pagos` interactivo y un `/pagos/:id` simulando pasarelas (Mercado Pago, PayPal) para que clientes abonen servicios B2B. Los estados se sincronizan localmente vía `useInvoicesAdmin.ts`.
 - **Backend:** Python 3.11+, FastAPI, SQLAlchemy, SQLite (localmente devolviendo fallbacks) o Postgres. Aún conserva la lógica dormida de e-commerce transaccional (stock y orders) en el backend para futuras implementaciones de venta de APIs B2B o automatizaciones.
-- **Servicios Cloud Mocked / Data Management:** Se implementó una gestión dinámica a través de `localStorage` para hacer CRUD de Novedades y Soluciones sin depender del backend.
-- **Panel Administrativo:** Cuenta con un panel de gestión en el path `/admin/login` (contraseña demo `admin`) y rutas protegidas `/admin/dashboard`, `/admin/novedades` y `/admin/soluciones` para gestionar el contenido de la web B2B de forma dinámica e instantánea.
-- **Flujo Principal:** Los usuarios navegan por las Soluciones y Novedades B2B y contactan vía email o el formulario web para cotizar implementaciones a medida.
+- **Servicios Cloud Mocked / Data Management:** Se implementó una gestión dinámica a través de `localStorage` para hacer CRUD de Novedades, Soluciones y Facturas B2B sin depender del backend.
+- **Panel Administrativo:** Cuenta con un panel de gestión en el path `/admin/login` (contraseña demo `admin`) y rutas protegidas `/admin/dashboard`, `/admin/novedades`, `/admin/soluciones` y `/admin/invoices` para gestionar el contenido y las deudas B2B de forma dinámica.
+- **Flujo Principal:** Los usuarios navegan por las Soluciones y Novedades B2B, contactan vía el formulario web e ingresan al portal de cobranzas para abonar.
 
 **Estructura principal**
 - `backend/`: servidor FastAPI, Dockerfiles, tests.

@@ -33,10 +33,7 @@ const ClientPortalPage = () => {
         <div className="portal-page">
             <section className="portal-header">
                 <div className="container">
-                    <h1 className="display-title">Portal de <span>Cobranzas B2B</span></h1>
-                    <p className="subtitle">
-                        Pagá tus servicios digitales y mantenimiento técnico de forma rápida, segura y desde cualquier lugar del mundo.
-                    </p>
+                    <div style={{ height: '2rem' }}></div>
                 </div>
             </section>
 

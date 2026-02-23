@@ -13,6 +13,7 @@ export default function Navbar() {
                 <Link to="/nosotros">Nosotros</Link>
                 <Link to="/soluciones">Soluciones</Link>
                 <Link to="/novedades">Novedades</Link>
+                <Link to="/pagos" style={{ display: 'flex', alignItems: 'center', gap: '0.4rem' }}>Portal de Pagos</Link>
                 <Link to="/contacto" style={{
                     background: 'var(--accent-primary)',
                     color: '#000',

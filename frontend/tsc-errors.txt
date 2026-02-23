@@ -1,0 +1,13 @@
+src/api/client.ts(4,24): error TS2339: Property 'env' does not exist on type 'ImportMeta'.
+src/pages/admin/SolutionsAdminPage.tsx(30,40): error TS2551: Property 'shortDescription' does not exist on type 'Solution'. Did you mean 'description'?
+src/pages/admin/SolutionsAdminPage.tsx(31,17): error TS2322: Type 'string | undefined' is not assignable to type 'string'.
+  Type 'undefined' is not assignable to type 'string'.
+src/pages/admin/SolutionsAdminPage.tsx(32,28): error TS2339: Property 'icon' does not exist on type 'Solution'.
+src/pages/admin/SolutionsAdminPage.tsx(34,29): error TS2339: Property 'price' does not exist on type 'Solution'.
+src/pages/admin/SolutionsAdminPage.tsx(35,33): error TS2339: Property 'isPopular' does not exist on type 'Solution'.
+src/pages/admin/SolutionsAdminPage.tsx(69,25): error TS2345: Argument of type '{ features: string[]; title: string; slug: string; shortDescription: string; fullDescription: string; icon: string; price: number; isPopular: boolean; }' is not assignable to parameter of type 'Omit<Solution, "id">'.
+  Type '{ features: string[]; title: string; slug: string; shortDescription: string; fullDescription: string; icon: string; price: number; isPopular: boolean; }' is missing the following properties from type 'Omit<Solution, "id">': summary, benefits
+src/pages/admin/SolutionsAdminPage.tsx(207,47): error TS2339: Property 'isPopular' does not exist on type 'Solution'.
+src/pages/admin/SolutionsAdminPage.tsx(210,47): error TS2339: Property 'icon' does not exist on type 'Solution'.
+src/pages/admin/SolutionsAdminPage.tsx(211,48): error TS2339: Property 'price' does not exist on type 'Solution'.
+src/pages/PaymentCheckoutPage.tsx(3,43): error TS2307: Cannot find module '../../hooks/useInvoicesAdmin' or its corresponding type declarations.

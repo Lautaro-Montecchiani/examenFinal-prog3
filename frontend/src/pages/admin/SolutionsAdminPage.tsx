@@ -12,12 +12,11 @@ const SolutionsAdminPage = () => {
     const [formData, setFormData] = useState({
         title: '',
         slug: '',
-        shortDescription: '',
+        summary: '',
+        description: '',
         fullDescription: '',
-        icon: '',
-        features: '', // We'll handle this as a comma separated string for the form
-        price: 0,
-        isPopular: false
+        features: '', // Comma separated
+        benefits: ''  // JSON stringified or just mock it for simplicity
     });
 
     const handleOpenForm = (item?: Solution) => {
@@ -27,12 +26,11 @@ const SolutionsAdminPage = () => {
             setFormData({
                 title: item.title,
                 slug: item.slug,
-                shortDescription: item.shortDescription,
-                fullDescription: item.fullDescription,
-                icon: item.icon,
-                features: item.features.join(', '),
-                price: item.price,
-                isPopular: item.isPopular || false
+                summary: item.summary || '',
+                description: item.description || '',
+                fullDescription: item.fullDescription || '',
+                features: item.features ? item.features.join(', ') : '',
+                benefits: item.benefits ? JSON.stringify(item.benefits) : '[]'
             });
         } else {
             setIsEditing(true);
@@ -40,12 +38,11 @@ const SolutionsAdminPage = () => {
             setFormData({
                 title: '',
                 slug: '',
-                shortDescription: '',
+                summary: '',
+                description: '',
                 fullDescription: '',
-                icon: 'Box',
                 features: '',
-                price: 0,
-                isPopular: false
+                benefits: '[]'
             });
         }
     };
@@ -58,9 +55,21 @@ const SolutionsAdminPage = () => {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
 
+        let parsedBenefits = [];
+        try {
+            parsedBenefits = JSON.parse(formData.benefits);
+        } catch {
+            parsedBenefits = [];
+        }
+
         const parsedData = {
-            ...formData,
-            features: formData.features.split(',').map(f => f.trim()).filter(f => f.length > 0)
+            title: formData.title,
+            slug: formData.slug,
+            summary: formData.summary,
+            description: formData.description,
+            fullDescription: formData.fullDescription,
+            features: formData.features.split(',').map(f => f.trim()).filter(f => f.length > 0),
+            benefits: parsedBenefits
         };
 
         if (currentId) {
@@ -116,55 +125,41 @@ const SolutionsAdminPage = () => {
                             />
                         </div>
 
-                        <div className="form-group">
-                            <label>Icono (Nombre de Lucide React, ej: Database, Server)</label>
-                            <input
-                                type="text"
-                                required
-                                value={formData.icon}
-                                onChange={e => setFormData({ ...formData, icon: e.target.value })}
-                            />
-                        </div>
-
-                        <div className="form-group">
-                            <label>Precio Base (USD)</label>
-                            <input
-                                type="number"
-                                required
-                                min="0"
-                                value={formData.price}
-                                onChange={e => setFormData({ ...formData, price: Number(e.target.value) })}
-                            />
-                        </div>
-
-                        <div className="form-group full-width" style={{ flexDirection: 'row', alignItems: 'center', gap: '1rem' }}>
-                            <input
-                                type="checkbox"
-                                id="isPopular"
-                                checked={formData.isPopular}
-                                onChange={e => setFormData({ ...formData, isPopular: e.target.checked })}
-                                style={{ width: 'auto' }}
-                            />
-                            <label htmlFor="isPopular" style={{ margin: 0, cursor: 'pointer' }}>Marcar como Destacado / Popular</label>
-                        </div>
-
                         <div className="form-group full-width">
-                            <label>Descripción Corta (Tarjeta)</label>
+                            <label>Resumen Breve (Summary)</label>
                             <textarea
                                 required
                                 rows={2}
-                                value={formData.shortDescription}
-                                onChange={e => setFormData({ ...formData, shortDescription: e.target.value })}
+                                value={formData.summary}
+                                onChange={e => setFormData({ ...formData, summary: e.target.value })}
+                            />
+                        </div>
+
+                        <div className="form-group full-width">
+                            <label>Descripción General (Description)</label>
+                            <textarea
+                                required
+                                rows={3}
+                                value={formData.description}
+                                onChange={e => setFormData({ ...formData, description: e.target.value })}
                             />
                         </div>
 
                         <div className="form-group full-width">
                             <label>Descripción Larga (Detalle)</label>
                             <textarea
-                                required
                                 rows={4}
                                 value={formData.fullDescription}
                                 onChange={e => setFormData({ ...formData, fullDescription: e.target.value })}
+                            />
+                        </div>
+
+                        <div className="form-group full-width">
+                            <label>Beneficios (JSON Array)</label>
+                            <textarea
+                                rows={3}
+                                value={formData.benefits}
+                                onChange={e => setFormData({ ...formData, benefits: e.target.value })}
                             />
                         </div>
 
@@ -194,8 +189,6 @@ const SolutionsAdminPage = () => {
                         <thead>
                             <tr>
                                 <th>Servicio</th>
-                                <th>Icono</th>
-                                <th>Precio</th>
                                 <th className="text-right">Acciones</th>
                             </tr>
                         </thead>
@@ -204,11 +197,8 @@ const SolutionsAdminPage = () => {
                                 <tr key={item.id}>
                                     <td>
                                         <strong>{item.title}</strong>
-                                        {item.isPopular && <span className="badge" style={{ marginLeft: '0.5rem', background: 'rgba(16, 185, 129, 0.2)', color: '#10b981' }}>Popular</span>}
                                         <div className="text-sm sub-text">/{item.slug}</div>
                                     </td>
-                                    <td>{item.icon}</td>
-                                    <td>${item.price.toLocaleString()} USD</td>
                                     <td className="text-right actions-cell">
                                         <button className="btn-icon text-blue" onClick={() => handleOpenForm(item)}>
                                             <Edit2 size={18} />
@@ -221,7 +211,7 @@ const SolutionsAdminPage = () => {
                             ))}
                             {solutions.length === 0 && (
                                 <tr>
-                                    <td colSpan={4} className="text-center py-4">No hay soluciones cargadas.</td>
+                                    <td colSpan={2} className="text-center py-4">No hay soluciones cargadas.</td>
                                 </tr>
                             )}
                         </tbody>

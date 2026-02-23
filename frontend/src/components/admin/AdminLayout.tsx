@@ -1,6 +1,6 @@
 import { Outlet, Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
-import { Hexagon, LayoutDashboard, Newspaper, Briefcase, LogOut } from 'lucide-react';
+import { Hexagon, LayoutDashboard, Newspaper, Briefcase, LogOut, CreditCard } from 'lucide-react';
 import './AdminLayout.css';
 
 const AdminLayout = () => {
@@ -44,6 +44,13 @@ const AdminLayout = () => {
                     >
                         <Briefcase size={20} />
                         <span>Soluciones</span>
+                    </Link>
+                    <Link
+                        to="/admin/invoices"
+                        className={`admin-nav-item ${isActive('/admin/invoices') ? 'active' : ''}`}
+                    >
+                        <CreditCard size={20} />
+                        <span>Cobranzas</span>
                     </Link>
                 </nav>
 

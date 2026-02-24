@@ -84,5 +84,56 @@ export const useInvoicesAdmin = () => {
         return invoices.find(inv => inv.id === id);
     };
 
-    return { invoices, addInvoice, updateInvoiceStatus, deleteInvoice, getInvoiceById };
+    // Financial calculations for Dashboard
+    const getFinancialMetrics = () => {
+        const now = new Date();
+        const currentMonth = now.getMonth();
+        const currentYear = now.getFullYear();
+
+        // Previous month logic for growth comparison
+        const lastMonth = currentMonth === 0 ? 11 : currentMonth - 1;
+        const lastMonthYear = currentMonth === 0 ? currentYear - 1 : currentYear;
+
+        let monthlyRevenue = 0;
+        let lastMonthRevenue = 0;
+        let annualRevenue = 0;
+        let pendingAmount = 0;
+
+        invoices.forEach(inv => {
+            const invDate = new Date(inv.createdAt);
+
+            // Standardize currency for simple demo (assume ARS = USD / 1000 roughly for demo purposes)
+            const normalizedAmount = inv.currency === 'USD' ? inv.amount : inv.amount / 1000;
+
+            if (inv.status === 'PAID') {
+                // Annual
+                if (invDate.getFullYear() === currentYear) {
+                    annualRevenue += normalizedAmount;
+                }
+                // Current Month
+                if (invDate.getFullYear() === currentYear && invDate.getMonth() === currentMonth) {
+                    monthlyRevenue += normalizedAmount;
+                }
+                // Last Month
+                if (invDate.getFullYear() === lastMonthYear && invDate.getMonth() === lastMonth) {
+                    lastMonthRevenue += normalizedAmount;
+                }
+            } else if (inv.status === 'PENDING') {
+                pendingAmount += normalizedAmount;
+            }
+        });
+
+        const growthPercentage = lastMonthRevenue === 0
+            ? 100
+            : ((monthlyRevenue - lastMonthRevenue) / lastMonthRevenue) * 100;
+
+        return {
+            monthlyRevenue: Math.round(monthlyRevenue),
+            annualRevenue: Math.round(annualRevenue),
+            pendingAmount: Math.round(pendingAmount),
+            growthPercentage: Math.round(growthPercentage)
+        };
+    };
+
+    return { invoices, addInvoice, updateInvoiceStatus, deleteInvoice, getInvoiceById, getFinancialMetrics };
 };

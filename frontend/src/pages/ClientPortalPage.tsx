@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Search, CreditCard, ShieldCheck, Zap } from 'lucide-react';
+import { LogIn, CreditCard, ShieldCheck, Zap } from 'lucide-react';
 import './ClientPortalPage.css';
 
 const ClientPortalPage = () => {
@@ -44,14 +44,23 @@ const ClientPortalPage = () => {
                         {/* Left Column: Search Form */}
                         <div className="portal-search-card">
                             <div className="card-icon">
-                                <Search size={32} />
+                                <LogIn size={32} />
                             </div>
-                            <h2>Buscar y Pagar Factura</h2>
-                            <p>Ingresá el código de referencia que te enviamos por correo electrónico para acceder al detalle de tu cuenta.</p>
+                            <h2>Acceso a Clientes B2B</h2>
+                            <p>Iniciá sesión de forma segura para revisar y abonar tus facturas pendientes.</p>
 
                             <form onSubmit={handleSearch} className="portal-form">
                                 <div className="form-group">
-                                    <label htmlFor="invoiceId">Código de Pago (Ej. INV-AIDS-XXXX)</label>
+                                    <label htmlFor="clientEmail">Email Corporativo</label>
+                                    <input
+                                        type="email"
+                                        id="clientEmail"
+                                        placeholder="ejemplo@tuempresa.com"
+                                        autoComplete="email"
+                                    />
+                                </div>
+                                <div className="form-group">
+                                    <label htmlFor="invoiceId">Código de Acceso (Ej. INV-AIDS)</label>
                                     <input
                                         type="text"
                                         id="invoiceId"
@@ -67,9 +76,16 @@ const ClientPortalPage = () => {
                                     {error && <span className="error-message">{error}</span>}
                                 </div>
                                 <button type="submit" className="btn btn-primary portal-btn">
-                                    Consultar Factura
+                                    Ingresar a mi cuenta
                                 </button>
                             </form>
+
+                            <div style={{ marginTop: '2rem', textAlign: 'center', borderTop: '1px solid #eaeaea', paddingTop: '1rem' }}>
+                                <p style={{ fontSize: '0.9rem', color: '#666', marginBottom: '0.5rem' }}>¿Sos parte del equipo de AIDS?</p>
+                                <a href="/admin/login" style={{ fontSize: '0.9rem', color: '#6366f1', textDecoration: 'none', fontWeight: '600' }}>
+                                    Acceso Administrador &rarr;
+                                </a>
+                            </div>
                         </div>
 
                         {/* Right Column: Features/Trust Badges */}

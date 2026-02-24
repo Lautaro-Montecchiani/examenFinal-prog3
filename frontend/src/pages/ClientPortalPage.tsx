@@ -46,7 +46,7 @@ const ClientPortalPage = () => {
                             <div className="card-icon">
                                 <LogIn size={32} />
                             </div>
-                            <h2>Acceso a Clientes B2B</h2>
+                            <h2>Acceso a Clientes</h2>
                             <p>Iniciá sesión de forma segura para revisar y abonar tus facturas pendientes.</p>
 
                             <form onSubmit={handleSearch} className="portal-form">
